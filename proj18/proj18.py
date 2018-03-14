@@ -10,6 +10,10 @@ activity = db.Table('activity',
                     db.Column('spec_num', db.Integer, db.ForeignKey('specifics.spec_num')),
                     db.Column('log_num', db.Integer, db.ForeignKey('logs.log_num'))
                     )
+report = db.Table('report',
+                    db.Column('item_num', db.Integer, db.ForeignKey('items.item_num')),
+                    db.Column('prog_num', db.Integer, db.ForeignKey('progress.prog_num'))
+                  )
 
 
 class Account(db.Model):
@@ -33,6 +37,7 @@ class Child(db.Model):
     lname_c = db.Column(db.String(80))
     bday_c = db.Column(db.Date)
     diagnosis = db.Column(db.String(50))
+    pers = db.relationship('Personal', backref='child', lazy='dynamic')
 class Teacher(db.Model):
     t_id = db.Column(db.Integer, primary_key=True)
     fname_t = db.Column(db.String(80))
@@ -44,10 +49,13 @@ class Teacher(db.Model):
 class Personal(db.Model):
     per_num = db.Column(db.Integer, primary_key=True)
     per_name = db.Column(db.String(50))
+    child_id = db.Column(db.Integer, db.ForeignKey('child.c_id'))
+    spec = db.relationship('Specifics', backref='specify', lazy='dynamic')
 class Specifics(db.Model):
     spec_num = db.Column(db.Integer, primary_key=True)
-    spec_name = db.Column(db.String(50))
+    spec_name = db.Column(db.String(50)),
     act = db.relationship('Activities', secondary=activity, backref=db.backref('act', lazy='dynamic'))
+    specify_id = db.Column(db.Integer, db.ForeignKey('personal.per_num'))
 class Logs(db.Model):
     log_num = db.Column(db.Integer, primary_key=True)
     clicks = db.Column(db.Integer)
@@ -56,12 +64,15 @@ class Logs(db.Model):
 class Class(db.Model):
     class_num = db.Column(db.Integer, primary_key=True)
     class_name = db.Column(db.String(50))
+    ed = db.relationship('Educational', backref='edu', lazy='dynamic')
 class Educational(db.Model):
     ed_num = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(50))
+    edu_id = db.Column(db.Integer, db.ForeignKey('class.class_num'))
 class Items(db.Model):
     item_num = db.Column(db.Integer, primary_key=True)
-    desc = db.Column(db.String(120))
+    desc = db.Column(db.String(120)),
+    rep = db.relationship('Report', secondary=report, backref=db.backref('rep', lazy='dynamic'))
 class Progress(db.Model):
     prog_num = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String(500))
