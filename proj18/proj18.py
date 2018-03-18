@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:regards@localhost/proj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:regards@localhost/proj18'
 db = SQLAlchemy(app)
 
 # relationship between specifics and logs
@@ -33,6 +33,7 @@ class Account(db.Model):
         return '<Account %r>' % self.acc_type
 
 class Access_Token(db.Model):
+    tkn_num = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(20), unique=True)
 
     def __init__(self, token):
@@ -203,6 +204,7 @@ class Audio(db.Model):
 def hello_world():
     return 'Hello World!'
 
+db.create_all()
 
 if __name__ == '__main__':
     app.run()
