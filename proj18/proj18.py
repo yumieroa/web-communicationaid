@@ -2,7 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:regards@localhost/proj18'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:regards@localhost/db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
 # relationship between specifics and logs
@@ -14,7 +15,6 @@ report = db.Table('report',
                     db.Column('item_num', db.Integer, db.ForeignKey('items.item_num')),
                     db.Column('prog_num', db.Integer, db.ForeignKey('progress.prog_num'))
                   )
-
 
 class Account(db.Model):
     acc_id = db.Column(db.Integer, primary_key=True)
@@ -108,8 +108,8 @@ class Personal(db.Model):
 
 class Specifics(db.Model):
     spec_num = db.Column(db.Integer, primary_key=True)
-    spec_name = db.Column(db.String(50)),
-    act = db.relationship('Activities', secondary=activity, backref=db.backref('act', lazy='dynamic'))
+    spec_name = db.Column(db.String(50))
+    act = db.relationship('Logs', secondary=activity, backref=db.backref('act', lazy='dynamic'))
     specify_id = db.Column(db.Integer, db.ForeignKey('personal.per_num'))
 
     def __init__(self, spec_name):
@@ -157,7 +157,7 @@ class Educational(db.Model):
 class Items(db.Model):
     item_num = db.Column(db.Integer, primary_key=True)
     desc = db.Column(db.String(120)),
-    rep = db.relationship('Report', secondary=report, backref=db.backref('rep', lazy='dynamic'))
+    rep = db.relationship('Progress', secondary=report, backref=db.backref('rep', lazy='dynamic'))
 
     def __init__(self, desc):
         self.desc = desc
