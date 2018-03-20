@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<form method="get" action = "/parent">
+{% for parent in myParent %}
+    <table>Name: {{ parent.fname_p}} {{ parent.lname_p}}</table>
+    <table>Birthdate: {{ parent.bday_p}}</table>
+    <table>E-mail: {{ parent.add_p}}</table>
+{% endfor %}
 <button class="" type="submit" onclick="window.location.href='/edit_parent'" >Edit</button>
+</form>
 </body>
 </html>

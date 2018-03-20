@@ -10,7 +10,11 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def mode():
-    return render_template('p_prof.html')
+    return render_template('mode.html')
+@app.route('/parent', methods=['GET'])
+def parent():
+    myParent = Parent.query.all()
+    return render_template('p_prof.html', myParent=myParent)
 
 @app.route('/edit_parent', methods=['GET','POST'])
 def edit_parent():
@@ -20,7 +24,6 @@ def edit_parent():
         db.session.commit()
         print "hello"
         return render_template('p_prof.html')
-
     if request.method == "GET":
         return render_template('edit_p.html')
 
