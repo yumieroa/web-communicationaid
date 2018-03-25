@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Parent's Profile</title>
 </head>
 <body>
-<form method="get" action = "/parent">
+<form method="get" action = "/edit_parent">
 {% for parent in myParent %}
     <table>Name: {{ parent.fname_p}} {{ parent.lname_p}}</table>
     <table>Birthdate: {{ parent.bday_p}}</table>

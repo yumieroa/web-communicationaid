@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Child's Profile</title>
+</head>
+<body>
+<form method="get" action = "/edit_child">
+{% for child in myChild %}
+    <table>Name: {{ child.fname_c}} {{ child.lname_c}}</table>
+    <table>Birthdate: {{ child.bday_c}}</table>
+    <table>Diagnosis: {{ child.diagnosis}}</table>
+{% endfor %}
+<button class="" type="submit" onclick="window.location.href='/edit_child'" >Edit</button>
+</form>
+</body>
+</html>
