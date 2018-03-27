@@ -24,9 +24,9 @@ def getoneuser(acc_id):
     user_data['acc_type'] = user.acc_type
     return jsonify({'user': user_data})
 
-@app.route('/parent', methods=['GET'])
-def parent():
-    myParent = Parent.query.all()
+@app.route('/parent/<acc_id>', methods=['GET'])
+def parent(acc_id):
+    myParent = Parent.query.filter_by(acc_id=acc_id).first()
     # return jsonify({'message': 'Successfully updated!'})
     return render_template('p_prof.html', myParent=myParent)
 
@@ -40,6 +40,15 @@ def edit_parent():
         return redirect('/parent')
     if request.method == "GET":
         return render_template('edit_p.html')
+
+@app.route('/del_parent', methods=['GET','POST'])
+def del_parent():
+    if request.method == "POST":
+        del_p = Parent.query.all()
+        db.session.delete(del_p)
+        db.session.commit()
+        print "hello"
+        return redirect('/parent')
 
 @app.route('/child', methods=['GET'])
 def child():

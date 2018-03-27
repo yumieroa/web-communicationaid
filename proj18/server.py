@@ -2,6 +2,7 @@ from flask import Flask, jsonify, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, url_for,redirect
 from model import Parent, Child, Account, db
+from account import *
 
 
 server = Flask(__name__)
@@ -14,3 +15,6 @@ db = SQLAlchemy(server)
 def parent():
 	if request.method == 'POST':
         return render_template('p_prof.html', myParent=myParent)
+
+if __name__ == "__main__":
+    server.run(port=8000, debug=True)

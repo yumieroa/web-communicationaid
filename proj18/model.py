@@ -23,6 +23,7 @@ class Account(db.Model):
     username = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(60), unique=True)
+    account = db.relationship("Parent", "Teacher", uselist=False, backref="account")
 
     def __init__(self, acc_type, username, email, password):
         self.acc_type = acc_type
@@ -49,6 +50,8 @@ class Parent(db.Model):
     lname_p = db.Column(db.String(80))
     bday_p = db.Column(db.Date)
     add_p = db.Column(db.String(120))
+    acc_id = db.Column(db.Integer, db.ForeignKey('account.acc_id'))
+    child = db.relationship("Child", uselist=False, backref="parent")
 
     def __init__(self, fname_p, lname_p, bday_p, add_p):
         self.fname_p = fname_p
@@ -64,6 +67,7 @@ class Child(db.Model):
     lname_c = db.Column(db.String(80))
     bday_c = db.Column(db.Date)
     diagnosis = db.Column(db.String(50))
+    p_id = db.Column(db.Integer, db.ForeignKey('parent.p_id'))
     pers = db.relationship('Personal', backref='child', lazy='dynamic')
 
     def __init__(self, fname_c, lname_c, bday_c, diagnosis):
@@ -83,6 +87,7 @@ class Teacher(db.Model):
     specialty = db.Column(db.String(120))
     tel_num = db.Column(db.BigInteger)
     add_t = db.Column(db.String(120))
+    acc_id = db.Column(db.Integer, db.ForeignKey('account.acc_id'))
 
     def __init__(self, fname_t, lname_t, bday_t, specialty, tel_num, add_t):
         self.fname_t = fname_t

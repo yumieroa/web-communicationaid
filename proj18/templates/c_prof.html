@@ -28,14 +28,14 @@
 
         <!--<A href="edit.html" >Logout</A>-->
        <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
+
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
 
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Parent's Profile</h3>
+              <h3 class="panel-title">Child's Profile</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -47,16 +47,17 @@
                     <tbody>
                     <form method="get" action = "/edit_child">
                         {% for child in myChild %}
-                        <table>Name: {{ child.fname_c}} {{ child.lname_c}}</table>
-                        <table>Birthdate: {{ child.bday_c}}</table>
-                       <table>Diagnosis: {{ child.diagnosis}}</table>
+                        <table>ID: {{ child.c_id }}</table>
+                        <table>Name: {{ child.fname_c}} {{ child.lname_c }}</table>
+                        <table>Birthdate: {{ child.bday_c }}</table>
+                       <table>Diagnosis: {{ child.diagnosis }}</table>
                         {% endfor %}
                     </form>
                     </tbody>
                   </table>
 
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                  <!--<a href="#" class="btn btn-primary">My Sales Performance</a>-->
+                  <!--<a href="#" class="btn btn-primary">Team Sales Performance</a>-->
                 </div>
               </div>
             </div>
