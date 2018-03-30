@@ -19,11 +19,12 @@ report = db.Table('report',
 
 class Account(db.Model):
     acc_id = db.Column(db.Integer, primary_key=True)
-    acc_type = db.Column(db.String(20), unique=True)
+    acc_type = db.Column(db.Integer, unique=True)
     username = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(60), unique=True)
-    account = db.relationship("Parent", "Teacher", uselist=False, backref="account")
+    acc_p = db.relationship("Parent", uselist=False, backref="account")
+    acc_t = db.relation("Teacher", uselist=False, backref="account")
 
     def __init__(self, acc_type, username, email, password):
         self.acc_type = acc_type

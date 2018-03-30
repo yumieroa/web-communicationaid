@@ -1,7 +1,10 @@
+
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, url_for,redirect
+from sqlalchemy import *
 from model import Parent, Child, Account, db
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:regards@localhost/db'
@@ -26,18 +29,21 @@ def getoneuser(acc_id):
 
 @app.route('/parent/<acc_id>', methods=['GET'])
 def parent(acc_id):
-    myParent = Parent.query.filter_by(acc_id=acc_id).first()
+    myParent = Parent.query.filter_by(p_id=acc_id)
     # return jsonify({'message': 'Successfully updated!'})
     return render_template('p_prof.html', myParent=myParent)
 
-@app.route('/edit_parent', methods=['GET','POST'])
-def edit_parent():
+@app.route('/edit_parent/<acc_id>', methods=['GET','POST'])
+def edit_parent(acc_id):
     if request.method == "POST":
-        parent = Parent(request.form['fname_p'], request.form['lname_p'], request.form['bday_p'], request.form['add_p'])
-        db.session.add(parent)
+        new_parent = Parent(request.form['fname_p'], request.form['lname_p'], request.form['bday_p'], request.form['add_p']).where(p_id=acc_id)
+    # if request.method == "PUT":
+    #     new_parent = update(Parent).where(acc_id==1). \
+    #         values(fname_p=request.form['fname_p'])
+        db.session.add(new_parent)
         db.session.commit()
         print "hello"
-        return redirect('/parent')
+        return redirect('/parent/<acc_id>')
     if request.method == "GET":
         return render_template('edit_p.html')
 
