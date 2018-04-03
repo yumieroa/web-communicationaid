@@ -1,24 +1,4 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Edit Profile</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<form method="post" action = '/edit_parent/<acc_id>'>-->
-    <!--<label>First Name:</label>-->
-    <!--<input id="fname_p" name="fname_p" type="text"/>-->
-    <!--<label>Last Name:</label>-->
-    <!--<input id="lname_p" name="lname_p" type="text"/>-->
-    <!--<label>Birthdate:</label>-->
-    <!--<input id="bday_p" name="bday_p" type="date"/>-->
-    <!--<label>Address:</label>-->
-    <!--<input id="add_p" name="add_p" type="text"/>-->
-    <!--<input type="submit" onclick="window.location.href='/parent/<acc_id>'"/>-->
-<!--</form>-->
 
-<!--</body>-->
-<!--</html>-->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">
 <link href="https://code.jquery.com/jquery-1.11.1.min.js">
@@ -56,33 +36,36 @@
                   <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
-                    <form method="post" action = "/edit_parent/<'acc_id'>">
+                    <form method = "post" action="/edit_parent/{{ acc_id }}">
                         <table>First Name:<input id="fname_p" name="fname_p" type="text"/></table>
                         <table>Last Name:<input id="lname_p" name="lname_p" type="text"/></table>
-                        <table>Birthdate: <input id="bday_p" name="bday_p" type="text"/></table>
+                        <table>Birthdate: <input id="bday_p" name="bday_p" type="date"/></table>
                         <table>Address: <input id="add_p" name="add_p" type="text"/></table>
 
-                    </form>
-                    </tbody>
-                  </table>
+
+
 
                   <!--<a href="#" class="btn btn-primary">My Sales Performance</a>-->
                   <!--<a href="#" class="btn btn-primary">Team Sales Performance</a>-->
-                </div>
-              </div>
-            </div>
+
                  <div class="panel-footer">
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
-                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/edit_parent/<acc_id>'">Save</i></button>
-                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/del_parent'"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button class="btn btn-sm btn-warning" type="submit"><i>Save</i></button>
+                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/parent/{{ acc_id }}'"><i class="glyphicon glyphicon-remove"></i></button>
                         </span>
                     </div>
-
+              </form>
+                  </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
 <script>
 

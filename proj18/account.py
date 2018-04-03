@@ -14,9 +14,35 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
 @app.route('/')
 def mode():
+    return render_template('mode.html')
+
+@app.route('/welcome')
+def welcome():
     return render_template('welcome.html')
+
+@app.route('/navigation')
+def nav():
+    return render_template('navigation.html')
+
+@app.route('/food')
+def food():
+    return render_template('food.html')
+
+@app.route('/toys')
+def toys():
+    return render_template('toys.html')
+
+@app.route('/places')
+def places():
+    return render_template('places.html')
+
+@app.route('/clothes')
+def clothes():
+    return render_template('clothes.html')
+
 @app.route('/user/<acc_id>', methods=['GET'])
 def getoneuser(acc_id):
     user = Account.query.filter_by(acc_id=acc_id).first()
@@ -29,25 +55,32 @@ def getoneuser(acc_id):
     user_data['acc_type'] = user.acc_type
     return jsonify({'user': user_data})
 
-@app.route('/parent/<acc_id>', methods=['GET'])
+@app.route('/parent/<int:acc_id>', methods=['GET'])
 def parent(acc_id):
-    myParent = Parent.query.filter_by(p_id=acc_id)
+    myParent = Parent.query.filter_by(acc_id=int(acc_id)).all()
     # return jsonify({'message': 'Successfully updated!'})
     return render_template('p_prof.html', myParent=myParent)
 
-@app.route('/edit_parent/<acc_id>', methods=['GET','POST'])
+@app.route('/edit_parent/<int:acc_id>', methods=['GET','POST'])
 def edit_parent(acc_id):
+    myParent = Parent.query.filter_by(acc_id=int(acc_id)).first()
+
     if request.method == "POST":
-        new_parent = Parent(request.form['fname_p'], request.form['lname_p'], request.form['bday_p'], request.form['add_p']).where(p_id=acc_id)
-    # if request.method == "PUT":
-    #     new_parent = update(Parent).where(acc_id==1). \
-    #         values(fname_p=request.form['fname_p'])
-        db.session.add(new_parent)
+
+        myParent.fname_p = request.form['fname_p']
+        myParent.lname_p = request.form['lname_p']
+        myParent.bday_p = request.form['bday_p']
+        myParent.add_p = request.form['add_p']
+
+        myParent = db.session.merge(myParent)
+        db.session.add(myParent)
         db.session.commit()
-        print "hello"
-        return redirect('/parent/<acc_id>')
+        print "hello success"
+        return redirect(url_for('parent', acc_id=int(acc_id)))
+
     if request.method == "GET":
-        return render_template('edit_p.html')
+        return render_template('edit_p.html', acc_id=int(acc_id))
+        #return redirect('/parent/acc_id')
 
 
 @app.route("/upload_parent", methods=["POST"])
@@ -98,4 +131,4 @@ def edit_child():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(threaded=True)

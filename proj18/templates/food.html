@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<title>FOOD</title>
+<link rel="shortcut icon" href="static/images/PATicon.png" />
+<meta charset="UTF-8"><link rel="stylesheet" href="static/css/w3.css">
+<link rel="stylesheet" href="static/css/font.css">
+<link rel="stylesheet" href="static/css/font-awesome.css">
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap-grid.css">
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap-reboot.css">
+<link rel="stylesheet" href="static/bootstrap/js/bootstrap.bundle.js">
+<link rel="stylesheet" href="static/bootstrap/js/bootstrap.js">
+<link rel="stylesheet" href="static/css/agency.min.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-quarter img{margin-bottom: -6px; cursor: pointer}
+.w3-quarter img:hover{opacity: 0.6; transition: 0.3s}
+</style>
+<body class="w3-light-grey">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="/navigation" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Categories</a>
+  <a href="/child" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Child</a>
+  <a href="/parent" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Parent</a>
+  <a href="/activity" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Child Activity: FOOD</a>
+  <a href="welcome.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Logout</a>
+</nav>
+
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">
+  <img src="static/food/foodicon.png" alt="logo" width="30px" height="auto"/>FOOD</span>
+    <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+  <!-- FOOD -->
+  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="food">
+    <div class="w3-quarter hover">
+        <img src="static/food/eggs.jpg" style="width:100%" id="egg" onclick="document.getElementById('egg_play').play(); egg_clicks(); return false;" alt="Eggs">
+        <img src="static/food/friedchicken.jpg" style="width:100%" id="friedchicken_img" onclick="document.getElementById('chicken_play').play(); chicken_clicks(); return false;" alt="Fried Chicken">
+        <img src="static/food/marshmallow.jpg" style="width:100%" id="marshmallow_img" onclick="document.getElementById('marshmallow_play').play(); marshmallow_clicks(); return false;" alt="Marshmallow">
+   </div>
+
+   <div class="w3-quarter hover">
+      <img src="static/food/hotdog.jpg" style="width:100%" onclick="document.getElementById('hotdog_play').play(); hotdog_clicks(); return false;" alt="Hotdog">
+      <img src="static/food/burger.jpg" style="width:100%" onclick="document.getElementById('burger_play').play(); burger_clicks(); return false;" alt="Burger">
+      <img src="static/food/lollipop.jpg" style="width:100%" onclick="document.getElementById('lollipop_play').play(); lollipop_clicks(); return false;" alt="Lollipop">
+    </div>
+
+    <div class="w3-quarter hover">
+      <img src="static/food/pancakes.jpg" style="width:100%" onclick="document.getElementById('pancake_play').play(); pancakes_clicks(); return false;" alt="Pancakes">
+      <img src="static/food/bbq.jpg" style="width:100%" onclick="document.getElementById('bbq_play').play(); bbq_clicks();  return false;" alt="Burger">
+      <img src="static/food/icecream.jpg" style="width:100%" onclick="document.getElementById('icecream_play').play(); icecream_clicks(); return false;" alt="Burger">
+    </div>
+
+    <div class="w3-quarter hover">
+      <img src="static/food/cookies.jpg" style="width:100%" onclick="document.getElementById('cookies_play').play(); cookies_clicks(); return false;" alt="Cookies">
+      <img src="static/food/fries.jpg" style="width:100%" onclick="document.getElementById('fries_play').play(); fries_clicks(); return false;" alt="French Fries">
+      <img src="static/food/halo.jpg" style="width:100%" onclick="document.getElementById('halo_play').play(); halo_clicks(); return false;" alt="Halo-halo">
+    </div>
+
+    <!--<div class="w3-quarter">-->
+      <!--<img src= "{{ url_for('static', filename='image_name' ) }}">-->
+      <!--</div>-->
+
+
+    <audio id="egg_play">
+    <source src="audio/egg.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="chicken_play">
+    <source src="static/audio/chicken.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="marshmallow_play">
+    <source src="static/audio/marshmallow.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="hotdog_play">
+    <source src="static/audio/hotdog.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="burger_play">
+    <source src="static/audio/burger.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="lollipop_play">
+    <source src="static/audio/lollipop.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="pancake_play">
+    <source src="static/audio/pancake.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="bbq_play">
+    <source src="static/audio/barbecue.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="icecream_play">
+    <source src="static/audio/ice_cream.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="cookies_play">
+    <source src="static/audio/cookies.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="fries_play">
+    <source src="static/audio/french_fries.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="halo_play">
+    <source src="static/audio/halo-halo.mp3" type="audio/ogg" />
+    </audio>
+    <audio id="audio_play">
+    <source src="static/audio/audio1.mp3" type="audio/ogg" />
+    </audio>
+
+
+  </div>
+
+    <!--<center><<button type="submit" href="edit_food.html">Edit</button></center>-->
+
+
+<!-- End page content -->
+</div>
+
+<!--<div id="upload-area">-->
+	<!--<div id="preview">-->
+		<!--<img width="100px" height="100px" src="/images/icons/128px/zurb.png" id="thumb">-->
+	<!--</div>-->
+
+	<!--<form action="/playground/ajax_upload" id="newHotnessForm">-->
+		<!--<label>Upload a Picture of Yourself</label>-->
+		<!--<input type="file" size="20" id="imageUpload" class=" ">-->
+		<!--<button class="button" type="submit">Save</button>-->
+	<!--</form>-->
+<!--</div>-->
+
+//Script for click counts
+    <!--<script type="text/javascript">-->
+            <!--function egg_clicks() {-->
+                <!---->
+                <!--egg++;-->
+                <!--alert(egg);-->
+                <!---->
+            <!--}-->
+            <!--function chicken_clicks() {-->
+                <!--chicken++;-->
+                <!--alert(chicken);-->
+            <!--}-->
+
+                <!--var egg = 0;-->
+                <!--var chicken = 0;-->
+            <!--}-->
+
+    <!--</script>-->
+// Script to open and close sidebar
+
+<script>
+
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+</script>
+
+ <script src="jQuery-2.1.4.min.js"></script>
+ <script src="app.js"></script>
+
+
+</body>
+</html>
