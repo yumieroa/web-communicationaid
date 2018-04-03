@@ -1,0 +1,96 @@
+
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">
+<link href="https://code.jquery.com/jquery-1.11.1.min.js">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+      <!--<div class="row">-->
+      <!--<div class="col-md-5  toppad  pull-right col-md-offset-3 ">-->
+           <!--<A href="edit.html" >Edit Profile</A>-->
+
+        <!--<A href="edit.html" >Logout</A>-->
+       <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Edit Parent's Profile</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+                        <strong>Upload Photo!</strong><br>
+                         <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+                        <div id="msg"></div>
+                        <input type="submit" value="Upload!" id="upload-button">
+                    </form>
+                </div>
+
+                  <br>
+                  <br>
+                  <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                    <form method = "post" action="/edit_child/{{ p_id }}">
+                        <table>First Name:<input id="fname_c" name="fname_c" type="text"/></table>
+                        <table>Last Name:<input id="lname_c" name="lname_c" type="text"/></table>
+                        <table>Birthdate: <input id="bday_c" name="bday_c" type="date"/></table>
+                        <table>Diagnosis: <input id="diagnosis" name="diagnosis" type="text"/></table>
+
+
+
+
+                  <!--<a href="#" class="btn btn-primary">My Sales Performance</a>-->
+                  <!--<a href="#" class="btn btn-primary">Team Sales Performance</a>-->
+
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <button class="btn btn-sm btn-warning" type="submit"><i>Save</i></button>
+                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/child/1'"><i class="glyphicon glyphicon-remove"></i></button>
+                        </span>
+                    </div>
+              </form>
+                  </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
