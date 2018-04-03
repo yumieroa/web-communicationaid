@@ -80,7 +80,6 @@ def edit_parent(acc_id):
 
     if request.method == "GET":
         return render_template('edit_p.html', acc_id=int(acc_id))
-        #return redirect('/parent/acc_id')
 
 
 @app.route("/upload_parent", methods=["POST"])
@@ -109,22 +108,32 @@ def upload():
 def send_image(filename):
     return send_from_directory("images", filename)
 
-@app.route('/child', methods=['GET'])
-def child():
-    myChild = Child.query.all()
+
+@app.route('/child/<int:p_id>', methods=['GET'])
+def child(p_id):
+    myChild = Child.query.filter_by(p_id=int(p_id)).all()
+    # return jsonify({'message': 'Successfully updated!'})
     return render_template('c_prof.html', myChild=myChild)
 
-@app.route('/edit_child', methods=['GET','POST'])
-def edit_child():
-    if request.method == "POST":
-        child = Child(request.form['fname_c'], request.form['lname_c'], request.form['bday_c'], request.form['diagnosis'])
-        db.session.add(child)
-        db.session.commit()
-        print "hello"
-        return redirect('/child')
-    if request.method == "GET":
-        return render_template('edit_c.html')
+@app.route('/edit_child/<int:p_id>', methods=['GET','POST'])
+def edit_child(p_id):
+    myChild = Child.query.filter_by(p_id=int(p_id)).first()
 
+    if request.method == "POST":
+
+        myChild.fname_c = request.form['fname_c']
+        myChild.lname_c = request.form['lname_c']
+        myChild.bday_c = request.form['bday_c']
+        myChild.diagnosis = request.form['diagnosis']
+
+        myChild = db.session.merge(myChild)
+        db.session.add(myChild)
+        db.session.commit()
+        print "hello success"
+        return redirect(url_for('child', p_id=int(p_id)))
+
+    if request.method == "GET":
+        return render_template('edit_c.html', p_id=int(p_id))
 
 # @app.route('/edit_parent', method=['POST'])
 # def edit_parent():

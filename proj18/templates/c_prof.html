@@ -1,25 +1,36 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Child's Profile</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<form method="get" action = "/edit_child">-->
-<!--{% for child in myChild %}-->
-    <!--<table>Name: {{ child.fname_c}} {{ child.lname_c}}</table>-->
-    <!--<table>Birthdate: {{ child.bday_c}}</table>-->
-    <!--<table>Diagnosis: {{ child.diagnosis}}</table>-->
-<!--{% endfor %}-->
-<!--<button class="" type="submit" onclick="window.location.href='/edit_child'" >Edit</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">
 <link href="https://code.jquery.com/jquery-1.11.1.min.js">
 <!------ Include the above in your HEAD tag ---------->
+
+<style>.group {
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+  height: 80px;
+  margin: 0 20px;
+  overflow: hidden;
+  width: 100px;
+}
+
+.group > div {
+  background-color: #333;
+  background-position: 50% 50%;
+  background-size: cover;
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+
+.group > div:first-child:last-child {
+  width: 100%;
+}
+
+.group > div:last-child:nth-child(3),
+.group > div:nth-child(2):nth-last-child(2)
+{
+  height: 50%;
+}
+</style>
 
 <div class="container">
       <!--<div class="row">-->
@@ -28,7 +39,6 @@
 
         <!--<A href="edit.html" >Logout</A>-->
        <br>
-
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
@@ -39,35 +49,36 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                <div class="col-md-3 col-lg-3 " align="center">
+                 <div class="group">
+                     <img src=" {{url_for('send_image', filename=image_name)}}">
+                    </div>
+                </div>
 
 
                 <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
-                    <form method="get" action = "/edit_child">
+                    <form method="get" action = "/edit_child/1">
                         {% for child in myChild %}
-                        <table>ID: {{ child.c_id }}</table>
-                        <table>Name: {{ child.fname_c}} {{ child.lname_c }}</table>
-                        <table>Birthdate: {{ child.bday_c }}</table>
-                       <table>Diagnosis: {{ child.diagnosis }}</table>
+                        <table>Name: {{ child.fname_c}} {{ child.lname_c}}</table>
+                        <table>Birthdate: {{ child.bday_c}}</table>
+                       <table>Diagnosis: {{ child.diagnosis}}</table>
                         {% endfor %}
-                    </form>
-                    </tbody>
-                  </table>
 
-                  <!--<a href="#" class="btn btn-primary">My Sales Performance</a>-->
-                  <!--<a href="#" class="btn btn-primary">Team Sales Performance</a>-->
-                </div>
-              </div>
-            </div>
                  <div class="panel-footer">
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
-                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/edit_child'"><i class="glyphicon glyphicon-edit"></i></button>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            <button class="btn btn-sm btn-warning" type="submit"><i class="glyphicon glyphicon-edit"></i></button>
+                            <button class="btn btn-sm btn-warning" type="submit" onclick="window.location.href='/del_parent'"><i class="glyphicon glyphicon-remove"></i></button>
                         </span>
                     </div>
+                    </form>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
