@@ -16,12 +16,29 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 @app.route('/')
-def mode():
-    return render_template('mode.html')
-
-@app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
+
+
+@app.route('/user/<acc_id>', methods=['GET'])
+def getoneuser(acc_id):
+    user = Account.query.filter_by(acc_id=acc_id).first()
+    if not user:
+        return jsonify({'message: "no user found"'})
+    user_data = {}
+    user_data['acc_id'] = user.acc_id
+    user_data['username'] = user.username
+    user_data['email'] = user.email
+    user_data['acc_type'] = user.acc_type
+    return jsonify({'user': user_data})
+
+@app.route('/mode/<int:acc_id>')
+def mode(acc_id):
+    return render_template('mode.html', acc_id=int(acc_id))
+
+@app.route('/parent_mode/<int:acc_id>')
+def parent_mode(acc_id):
+    return render_template('p_mode.html', acc_id=int(acc_id))
 
 @app.route('/navigation')
 def nav():
@@ -42,18 +59,6 @@ def places():
 @app.route('/clothes')
 def clothes():
     return render_template('clothes.html')
-
-@app.route('/user/<acc_id>', methods=['GET'])
-def getoneuser(acc_id):
-    user = Account.query.filter_by(acc_id=acc_id).first()
-    if not user:
-        return jsonify({'message: "no user found"'})
-    user_data = {}
-    user_data['acc_id'] = user.acc_id
-    user_data['username'] = user.username
-    user_data['email'] = user.email
-    user_data['acc_type'] = user.acc_type
-    return jsonify({'user': user_data})
 
 @app.route('/parent/<int:acc_id>', methods=['GET'])
 def parent(acc_id):
