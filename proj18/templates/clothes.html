@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <title>CLOTHES</title>
-<link rel="shortcut icon" href="clothes/clothesicon.png"/>
+<link rel="shortcut icon" href="static/clothes/clothesicon.png"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -16,9 +16,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
-  <a href="navigation.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Categories</a>
-  <a href="childinfo.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Child</a>
-  <a href="parent.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Parent</a>
+  <a href="/navigation" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Categories</a>
+  <a href="/child/1" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Child</a>
+  <a href="/parent/1" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Parent</a>
   <a href="clothes_rec.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Child Activity: CLOTHES</a>
   <a href="welcome.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Logout</a>
 </nav>
@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
   <span class="w3-left w3-padding">
-  <img src="clothes/clothesicon.png" alt="logo" width="30px" height="auto"/>CLOTHES</span>
+  <img src="static/clothes/clothesicon.png" alt="logo" width="30px" height="auto"/>CLOTHES</span>
     <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
 </header>
 
@@ -47,23 +47,23 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- FOOD -->
   <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="food">
     <div class="w3-quarter">
-        <img src="clothes/panty.jpg" style="width:100%" onclick="document.getElementById('panty_play').play(); panty_clicks(); return false;" alt="Panty">
-        <img src="clothes/dress.jpg" style="width:100%" onclick="document.getElementById('dress_play').play(); dress_clicks(); return false;" alt="Dress">
+        <img src="static/clothes/panty.jpg" style="width:100%" onclick="document.getElementById('panty_play').play(); panty_clicks(); return false;" alt="Panty">
+        <img src="static/clothes/dress.jpg" style="width:100%" onclick="document.getElementById('dress_play').play(); dress_clicks(); return false;" alt="Dress">
        </div>
 
    <div class="w3-quarter">
-      <img src="clothes/shorts.jpg" style="width:100%" onclick="document.getElementById('shorts_play').play(); shorts_clicks(); return false;" alt="Shorts">
-      <img src="clothes/skirt.jpg" style="width:100%" onclick="document.getElementById('skirt_play').play(); skirt_clicks(); return false;" alt="Skirt">
+      <img src="static/clothes/shorts.jpg" style="width:100%" onclick="document.getElementById('shorts_play').play(); shorts_clicks(); return false;" alt="Shorts">
+      <img src="static/clothes/skirt.jpg" style="width:100%" onclick="document.getElementById('skirt_play').play(); skirt_clicks(); return false;" alt="Skirt">
     </div>
 
     <div class="w3-quarter">
-      <img src="clothes/shirt.jpg" style="width:100%" onclick="document.getElementById('shirt_play').play(); shirt_clicks(); return false;" alt="Shirt">
-     <img src="clothes/pants.jpg" style="width:100%" onclick="document.getElementById('pants_play').play(); pants_clicks(); return false;" alt="Pants">
+      <img src="static/clothes/shirt.jpg" style="width:100%" onclick="document.getElementById('shirt_play').play(); shirt_clicks(); return false;" alt="Shirt">
+     <img src="static/clothes/pants.jpg" style="width:100%" onclick="document.getElementById('pants_play').play(); pants_clicks(); return false;" alt="Pants">
     </div>
 
     <div class="w3-quarter">
-      <img src="clothes/jacket.jpg" style="width:100%" onclick="document.getElementById('jacket_play').play(); jacket_clicks(); return false;" alt="Jacket">
-     <img src="clothes/sweater.jpg" style="width:100%" onclick="document.getElementById('sweater_play').play(); sweater_clicks(); return false;" alt="Sweater">
+      <img src="static/clothes/jacket.jpg" style="width:100%" onclick="document.getElementById('jacket_play').play(); jacket_clicks(); return false;" alt="Jacket">
+     <img src="static/clothes/sweater.jpg" style="width:100%" onclick="document.getElementById('sweater_play').play(); sweater_clicks(); return false;" alt="Sweater">
     </div>
 
   </div>

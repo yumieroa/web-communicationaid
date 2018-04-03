@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <title>TOYS</title>
-<link rel="shortcut icon" href="toys/toyicon.png"/>
+<link rel="shortcut icon" href="static/toys/toyicon.png"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -15,9 +15,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
-  <a href="navigation.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Categories</a>
-  <a href="childinfo.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Child</a>
-  <a href="parent.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Parent</a>
+  <a href="/navigation/" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Categories</a>
+  <a href="/child/1" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Child</a>
+  <a href="/parent/1" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">The Parent</a>
   <a href="toys_rec.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Child Activity: TOYS</a>
   <a href="welcome.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Logout</a>
 </nav>
@@ -25,7 +25,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
   <span class="w3-left w3-padding">
-  <img src="toys/toyicon.png" alt="logo" width="30px" height="auto"/>TOYS</span>
+  <img src="statictoys/toyicon.png" alt="logo" width="30px" height="auto"/>TOYS</span>
     <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
 </header>
 
@@ -46,27 +46,27 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- FOOD -->
   <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="food">
     <div class="w3-quarter">
-        <img src="toys/stack.jpg" style="width:100%" onclick="document.getElementById('stack_play').play(); stack_clicks(); return false;" alt="Stack">
-        <img src="toys/ball.jpg" style="width:100%" onclick="document.getElementById('ball_play').play(); ball_clicks(); return false;" alt="Ball">
-        <img src="toys/car.jpg" style="width:100%" onclick="document.getElementById('car_play').play(); car_clicks();  return false;" alt="Car">
+        <img src="static/toys/stack.jpg" style="width:100%" onclick="document.getElementById('stack_play').play(); stack_clicks(); return false;" alt="Stack">
+        <img src="static/toys/ball.jpg" style="width:100%" onclick="document.getElementById('ball_play').play(); ball_clicks(); return false;" alt="Ball">
+        <img src="static/toys/car.jpg" style="width:100%" onclick="document.getElementById('car_play').play(); car_clicks();  return false;" alt="Car">
    </div>
 
    <div class="w3-quarter">
-      <img src="toys/puzzle.jpg" style="width:100%" onclick="document.getElementById('puzzle_play').play(); puzzle_clicks(); return false;" alt="Puzzle">
-      <img src="toys/swing.jpg" style="width:100%" onclick="document.getElementById('swing_play').play(); swing_clicks(); return false;" alt="Swing">
-      <img src="toys/teddy.jpg" style="width:100%" onclick="document.getElementById('teddy_play').play(); teddy_clicks(); return false;" alt="Teddy">
+      <img src="static/toys/puzzle.jpg" style="width:100%" onclick="document.getElementById('puzzle_play').play(); puzzle_clicks(); return false;" alt="Puzzle">
+      <img src="static/toys/swing.jpg" style="width:100%" onclick="document.getElementById('swing_play').play(); swing_clicks(); return false;" alt="Swing">
+      <img src="static/toys/teddy.jpg" style="width:100%" onclick="document.getElementById('teddy_play').play(); teddy_clicks(); return false;" alt="Teddy">
     </div>
 
     <div class="w3-quarter">
-      <img src="toys/doodlepad.jpg" style="width:100%" onclick="document.getElementById('doodle_play').play(); doodle_clicks(); return false;" alt="Doodle Pad">
-      <img src="toys/lego.jpg" style="width:100%" onclick="document.getElementById('lego_play').play(); lego_clicks(); return false;" alt="Legos">
-      <img src="toys/flashcards.jpg" style="width:100%" onclick="document.getElementById('flash_play').play(); flash_clicks(); return false;" alt="Flashcards">
+      <img src="static/toys/doodlepad.jpg" style="width:100%" onclick="document.getElementById('doodle_play').play(); doodle_clicks(); return false;" alt="Doodle Pad">
+      <img src="static/toys/lego.jpg" style="width:100%" onclick="document.getElementById('lego_play').play(); lego_clicks(); return false;" alt="Legos">
+      <img src="static/toys/flashcards.jpg" style="width:100%" onclick="document.getElementById('flash_play').play(); flash_clicks(); return false;" alt="Flashcards">
     </div>
 
     <div class="w3-quarter">
-      <img src="toys/rattle.jpg" style="width:100%" onclick="document.getElementById('rattle_play').play(); rattle_clicks(); return false;" alt="Rattle">
-      <img src="toys/trampoline.jpg" style="width:100%" onclick="document.getElementById('trampoline_play').play(); trampoline_clicks(); return false;" alt="Trampoline">
-      <img src="toys/slide.jpg" style="width:100%" onclick="document.getElementById('slide_play').play(); slide_clicks(); return false;" alt="Slide">
+      <img src="static/toys/rattle.jpg" style="width:100%" onclick="document.getElementById('rattle_play').play(); rattle_clicks(); return false;" alt="Rattle">
+      <img src="static/toys/trampoline.jpg" style="width:100%" onclick="document.getElementById('trampoline_play').play(); trampoline_clicks(); return false;" alt="Trampoline">
+      <img src="static/toys/slide.jpg" style="width:100%" onclick="document.getElementById('slide_play').play(); slide_clicks(); return false;" alt="Slide">
     </div>
   </div>
 
