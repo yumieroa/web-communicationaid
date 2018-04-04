@@ -24,7 +24,7 @@ class Account(db.Model):
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(60), unique=True)
     acc_p = db.relationship("Parent", uselist=False, backref="account")
-    acc_t = db.relation("Teacher", uselist=False, backref="account")
+    acc_t = db.relationship("Teacher", uselist=False, backref="account")
 
     def __init__(self, acc_type, username, email, password):
         self.acc_type = acc_type
